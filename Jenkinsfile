@@ -27,5 +27,7 @@ pipeline {
                         sh "echo 'you cannot get hello from ${env.BRANCH_NAME} branch!'"
                     }
                     }
+            }
+       }
    }
 }
