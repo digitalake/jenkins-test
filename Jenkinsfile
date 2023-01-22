@@ -18,12 +18,14 @@ pipeline {
             echo "deploying..."
         }
        }
-       stage('Conditional') {
-        if (env.BRANCH_NAME == 'main') {
-            echo 'Hello from main branch'
-        } else {
-            sh "echo 'Hello from ${env.BRANCH_NAME} branch!'"
-        }
-    }
+       stage('Hello') {
+            steps {
+                script {
+                    if (env.BRANCH_NAME == 'main') {
+                        echo 'hello from main'
+                    }  else {
+                        sh "echo 'you cannot get hello from ${env.BRANCH_NAME} branch!'"
+                    }
+                    }
    }
 }
