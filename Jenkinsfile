@@ -34,7 +34,7 @@ pipeline {
         always {
             withCredentials([string(credentialsId: 'TelegramBotToken', variable: 'TG_TOKEN'), string(credentialsId: 'TelegramGroupID', variable: 'GROUP_ID')]) {
                 sh (
-                'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"-607571432\", \"text\": \"Pipeline build finished with success\"}\' https://api.telegram.org/bot5736407974:AAF_mvzzO7jjzaNYgxn2inImUX7Rg0f0VZ4/sendMessage'
+                'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"<your-chat-id>\", \"text\": \"Pipeline build finished with success\"}\' https://api.telegram.org/bot<your-tg-token>/sendMessage'
                 )
             }
         }
