@@ -18,6 +18,7 @@ pipeline {
             echo "commit hash: ${env.GIT_COMMIT}"
             echo "commit author: ${env.GIT_AUTHOR_NAME}"
             echo "commiter email: ${env.GIT_COMMITTER_EMAIL}"
+            telegramSend 'Hello World'
         }
        }
        stage('Conditional') {
