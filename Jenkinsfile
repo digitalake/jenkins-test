@@ -1,6 +1,6 @@
 pipeline {
-   agent any
-   stages {
+    agent any
+    stages {
        stage(" List env Variables") {
             steps {
                 sh "printenv"
@@ -29,9 +29,9 @@ pipeline {
                     }  else {
                         sh "echo 'you cannot get HOLA when running on ${env.BRANCH_NAME} branch!'"
                     }
-                    }
+                }
             }
-       }
+        }
     post {
         always {
             withCredentials([string(credentialsId: 'TelegramBotToken', variable: 'TOKEN'), string(credentialsId: 'TelegramGroupID', variable: 'CHAT_ID')]) {
