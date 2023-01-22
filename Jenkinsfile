@@ -1,7 +1,6 @@
 pipeline {
    agent any
    stages {
-        stages {
        stage(" List env Variables") {
             steps {
                 sh "printenv"
@@ -34,4 +33,3 @@ pipeline {
             }
        }
    }
-}
