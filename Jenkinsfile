@@ -17,7 +17,7 @@ pipeline {
             echo "jenkins build id: ${env.BUILD_ID}"
             echo "commit hash: ${env.GIT_COMMIT}"
             sh ("""
-            curl -X POST -H "Content-Type: application/json" -d "{\"chat_id\": \"-607571432\", \"text\": \"Jenkins says hi\"}" "https://api.telegram.org/bot5736407974:AAF_mvzzO7jjzaNYgxn2inImUX7Rg0f0VZ4/sendMessage"
+            curl -X POST -H "Content-Type: application/json" -d "\{\"chat_id\": \"-607571432\", \"text\": \"Jenkins says hi\"\}" "https://api.telegram.org/bot5736407974:AAF_mvzzO7jjzaNYgxn2inImUX7Rg0f0VZ4/sendMessage"
             """)
         }
        }
