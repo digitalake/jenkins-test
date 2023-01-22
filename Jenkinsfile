@@ -1,30 +1,34 @@
 pipeline {
    agent any
    stages {
+        stages {
+       stage(" List env Variables") {
+            steps {
+                sh "printenv"
+            }
+        }
+    }
        stage('test') {
            steps {
-               echo "hello world"
-               echo "${env.BUILD_ID} on ${env.JENKINS_URL}"
+               echo "Starting tests..."
+               echo "testing ${env.BUILD_ID} on ${env.JENKINS_URL}"
            }
        }
        stage('build') {
         steps {
-            echo "jenkins is building something"
-            echo "build ended"
+            echo "jenkins build id: ${env.BUILD_ID}"
+            echo "commit hash: ${env.GIT_COMMIT}"
+            echo "commit author: ${env.GIT_AUTHOR_NAME}"
+            echo "commiter email: ${env.GIT_COMMITTER_EMAIL}"
         }
        }
-       stage('deploy') {
-        steps {
-            echo "deploying..."
-        }
-       }
-       stage('Hello') {
+       stage('Conditional') {
             steps {
                 script {
                     if (env.BRANCH_NAME == 'main') {
-                        echo 'hello from main'
+                        echo "HOLA from ${env.BRANCH_NAME}"
                     }  else {
-                        sh "echo 'you cannot get hello from ${env.BRANCH_NAME} branch!'"
+                        sh "echo 'you cannot get HOLA when running on ${env.BRANCH_NAME} branch!'"
                     }
                     }
             }
