@@ -6,7 +6,6 @@ pipeline {
                 sh "printenv"
             }
         }
-    }
        stage('test') {
            steps {
                echo "Starting tests..."
@@ -33,3 +32,4 @@ pipeline {
             }
        }
    }
+}
