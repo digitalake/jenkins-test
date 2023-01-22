@@ -33,13 +33,16 @@ pipeline {
             }
         }
     }
-//    post {
-//        always {
-//            withCredentials([string(credentialsId: 'TelegramBotToken', variable: 'TOKEN'), string(credentialsId: 'TelegramGroupID', variable: 'CHAT_ID')]) {
+    post {
+        always {
+            withCredentials([string(credentialsId: 'TelegramBotToken', variable: 'TG_TOKEN'), string(credentialsId: 'TelegramGroupID', variable: 'GROUP_ID')]) {
+                sh (
+                'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"'${TG_TOKEN}'\", \"text\": \"Pipeline build '${env.BUILD_NUMBER}' on '${env.BRANCH_NAME}' finished with '${currentBuild.currentResult}'\"}\' https://api.telegram.org/bot'${GROUP_ID}'/sendMessage'
+                )
 //                sh  ("""
 //                curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d chat_id=${CHAT_ID} -d parse_mode=markdown -d text='*Job*: ${env.JOB_NAME} *Branch*: ${env.BRANCH_NAME} *Build* ${env.BUILD_NUMBER} *Result* ${currentBuild.currentResult}'
 //                """)
-//            }
-//        }
-//    }
+            }
+        }
+    }
 }
