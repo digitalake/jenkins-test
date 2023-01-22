@@ -1,6 +1,7 @@
 # jenkins-test
 test repo for using jenkins for the first time
 
+> You can see the jenkins-setup repo by github link [here](https://github.com/digitalake/jenkins-docker-compose)
 ### Tasks
 To-do:
   - Setup Jenkins on server.
@@ -119,7 +120,7 @@ post {
         always {
             withCredentials([string(credentialsId: 'TelegramBotToken', variable: 'TG_TOKEN'), string(credentialsId: 'TelegramGroupID', variable: 'GROUP_ID')]) {
                 sh (
-                'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"${GROUP_ID}\", \"text\": \"Pipeline build finished with success\"}\' https://api.telegram.org/bot${TG_TOKEN}/sendMessage'
+                'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"<your-group-id>\", \"text\": \"Pipeline build finished with success\"}\' https://api.telegram.org/bot<your-tg-token>/sendMessage'
                 )
             }
         }
