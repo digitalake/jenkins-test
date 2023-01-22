@@ -18,7 +18,8 @@ pipeline {
             echo "commit hash: ${env.GIT_COMMIT}"
             echo "commit author: ${env.GIT_AUTHOR_NAME}"
             echo "commiter email: ${env.GIT_COMMITTER_EMAIL}"
-            telegramSend 'Hello World'
+            sh "curl -X POST -H "Content-Type: application/json" -d "{\"chat_id\": \"-607571432\", \"text\": \"
+            Jenkins is here!\"}" https://api.telegram.org/bot5736407974:AAF_mvzzO7jjzaNYgxn2inImUX7Rg0f0VZ4/sendMessage"
         }
        }
        stage('Conditional') {
