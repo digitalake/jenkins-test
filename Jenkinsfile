@@ -32,7 +32,7 @@ pipeline {
                     }
             }
        }
-       post {
+    post {
         always {
             withCredentials([string(credentialsId: 'TelegramBotToken', variable: 'TOKEN'), string(credentialsId: 'TelegramGroupID', variable: 'CHAT_ID')]) {
                 sh  ("""
